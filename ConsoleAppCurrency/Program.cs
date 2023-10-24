@@ -25,7 +25,7 @@ namespace CurrencyConverter
 			};
 
 			// Десериализация JSON-запроса
-			dynamic data = JsonConvert.DeserializeObject(json);
+			var data = JsonConvert.DeserializeObject(json);
 
 			// Расчет общей суммы в базовой валюте (бел.руб)
 			double totalBYN = 0;
