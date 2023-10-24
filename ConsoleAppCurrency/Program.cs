@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleAppCurrency;
+using Newtonsoft.Json;
 
 namespace CurrencyConverter
 {
@@ -25,18 +26,18 @@ namespace CurrencyConverter
 			};
 
 			// Десериализация JSON-запроса
-			var data = JsonConvert.DeserializeObject(json);
+			CurrencyData data = JsonConvert.DeserializeObject<CurrencyData>(json);
 
 			// Расчет общей суммы в базовой валюте (бел.руб)
 			double totalBYN = 0;
-			foreach (var item in data.summa)
+			foreach (var item in data.Summa)
 			{
-				string currency = item.currency;
-				double value = item.value;
+				string currency = item.Currency;
+				double value = item.Value;
 				totalBYN += value * exchangeRates[currency];
 			}
 
-			Console.WriteLine($"Результат: {totalBYN} {data.resultCurrency}");
+			Console.WriteLine($"Результат: {totalBYN} {data.ResultCurrency}");
 			Console.ReadLine();
 		}
 	}
